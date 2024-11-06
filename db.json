@@ -1,0 +1,51 @@
+{
+  "contatos": [
+    {
+      "id": "2824",
+      "nome": "Danilo",
+      "telefone": "11119785656"
+    },
+    {
+      "id": "9c87",
+      "nome": "Messiq",
+      "telefone": "1231421342"
+    },
+    {
+      "id": "7ee9",
+      "nome": "Neymar",
+      "telefone": "113463565646"
+    },
+    {
+      "id": "c63c",
+      "nome": "CR7",
+      "telefone": "2135245346"
+    },
+    {
+      "id": "456d",
+      "nome": "Griezman",
+      "telefone": "1178678678"
+    },
+    {
+      "id": "6ff0",
+      "nome": "Mbappe",
+      "telefone": "11278856858"
+    }
+  ],
+  "faq": [
+    {
+      "id": "1",
+      "pergunta": "O que é JSON Server?",
+      "resposta": "JSON Server é uma ferramenta que permite..."
+    },
+    {
+      "id": "2",
+      "pergunta": "Como instalar o JSON Server?",
+      "resposta": "Você pode instalar o JSON Server usando o npm com..."
+    },
+    {
+      "id": "3",
+      "pergunta": "Posso usar JSON Server em produção?",
+      "resposta": "JSON Server é uma ferramenta que permite..."
+    }
+  ]
+}
