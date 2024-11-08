@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         padding: 15,
         backgroundColor: '#ffffff',
         marginTop: 12,
-        elevation: 3, // Sombra para Android
+        elevation: 3, 
         shadowColor: '#00',
         shadowOpacity:0.2,
         shadowRadius: 1.41

@@ -47,11 +47,11 @@ function Cadastro() {
             <Text style={styles.loginButtonText}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Started')}>
+          <TouchableOpacity onPress={() => navigation.navigate('CadJogador')}>
             <Text style={styles.forgotPassword}>Você está procurando um clube?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('CadClube')} >
             <Text style={styles.forgotPassword}>Seu clube ainda não está cadastrado?</Text>
           </TouchableOpacity>
         </View>
