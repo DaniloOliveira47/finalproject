@@ -6,6 +6,7 @@ import Started from './src/Pages/Started';
 import Cadastro from './src/Pages/Cadastro';
 import CadJogador from './src/Pages/CadJogador';
 import CadClube from './src/Pages/CadClube';
+import CadJogador2 from './src/Pages/CadJogador2';
 
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +19,7 @@ export default function MainNavigator() {
             <Stack.Screen name="Login" component={Cadastro} options={{headerShown: false}} />
             <Stack.Screen name="CadJogador" component={CadJogador} options={{headerShown: false}}/>
             <Stack.Screen name="CadClube" component={CadClube} options={{headerShown: false}}/>
+            <Stack.Screen name="CadJogador2" component={CadJogador2} options={{headerShown: false}}/>
 
         </Stack.Navigator>
      </NavigationContainer>

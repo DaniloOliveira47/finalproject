@@ -70,7 +70,7 @@ function CadJogador() {
             keyboardType="numeric"
           />
 
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('CadJogador2')}>
             <Text style={styles.loginButtonText}>Continuar cadastro</Text>
           </TouchableOpacity>
 
