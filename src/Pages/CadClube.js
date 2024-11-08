@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ImageBackground, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
 function CadClube() {
-    
+    const navigation = useNavigation();
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -97,7 +97,7 @@ function CadClube() {
                         <Text style={styles.loginButtonText}>Cadastrar</Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => navigation.navvigate}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                         <Text style={styles.forgotPassword}>Já tem uma conta? Faça login</Text>
                     </TouchableOpacity>
                 </View>

@@ -15,7 +15,7 @@ export default function MainNavigator() {
      <NavigationContainer>
         <Stack.Navigator initialRouteName="Started">
             <Stack.Screen name="Started" component={Started} options={{ headerShown: false }} />
-            <Stack.Screen name="Login" component={Cadastro} />
+            <Stack.Screen name="Login" component={Cadastro} options={{headerShown: false}} />
             <Stack.Screen name="CadJogador" component={CadJogador} options={{headerShown: false}}/>
             <Stack.Screen name="CadClube" component={CadClube} options={{headerShown: false}}/>
 
