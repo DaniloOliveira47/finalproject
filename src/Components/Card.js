@@ -1,36 +1,45 @@
 import React from 'react'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { Button, Image, ImageBackground, StyleSheet, Text, View } from 'react-native'
 
 export default function Card(props) {
     return (
-        <View style={styles.card}>
-            <Text style={styles.cardTitle}>{props.title}</Text>
-            <Text style={styles.cardContent}>
-                {props.content}
-            </Text>
-             <Button title={props.buttonText} onPress={props.onPress}/>
-        </View>
+      
+            <View style={styles.card}>
+                  <Image style={styles.imagem} source={require('../assets/images/grama.png')}/>
+                <Text style={styles.cardTitle}></Text>
+                <Text style={styles.cardContent}>
+                    {props.content}
+                </Text>
+               
+            </View>
+       
     )
 }
 
 const styles = StyleSheet.create({
     card: {
-        borderRadius: 10,
-        padding: 15,
-        backgroundColor: '#ffffff',
+        marginLeft: 50,
+        borderRadius: 20,
+        backgroundColor: '#103a0c',
         marginTop: 12,
-        elevation: 3, 
-        shadowColor: '#00',
-        shadowOpacity:0.2,
-        shadowRadius: 1.41
+        height: 200,
+        width: 400,
+        transform: [{ perspective: 600 }, { rotateX: '-5deg' }, { rotateY: '22deg' }],
+        borderWidth: 2,
+        borderColor: '#bfdfa9'
     },
     cardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginBottom: 10
+        marginBottom: 10,
     },
     cardContent: {
         fontSize: 14,
-        marginBottom: 10
+        marginBottom: 10,
+    },
+    imagem: {
+        width: '100%',
+        height: '100%',
+        borderRadius: 20
     }
-})
+});

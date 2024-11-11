@@ -1,26 +1,31 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View } from 'react-native';
-import Header from '../Components/Header';
+import {StyleSheet, Text, View } from 'react-native';
+import Card from '../Components/Card';
+import Filtro from '../Components/filtro';
+
 
 export default function Home() {
   return (
-    
-    <ImageBackground source={require('../assets/images/campoDeFut.png')} style={styles.backgroundImage}>
-      <View style={styles.container}>
-      </View>
-    </ImageBackground>
+   <View style={styles.pagina}>
+    <View style={styles.corpo}>
+  <Card style={styles.card}/>
+  <View>
+  </View>
+  </View>
+   </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+   pagina: {
     alignItems: 'center',
-    padding: 10,
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
+    backgroundColor: '#1f5019',
+    width: '100%',
+    height: '100%',
+    
+   },
+   corpo: {
+    marginTop: 100,
+   }
+   
 });
