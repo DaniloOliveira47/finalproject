@@ -18,13 +18,13 @@ export default function Card(props) {
 
 const styles = StyleSheet.create({
     card: {
-        marginLeft: 50,
+        marginLeft: 30,
         borderRadius: 20,
         backgroundColor: '#103a0c',
         marginTop: 12,
         height: 200,
         width: 400,
-        transform: [{ perspective: 600 }, { rotateX: '-5deg' }, { rotateY: '22deg' }],
+        transform: [{ perspective: 900 }, { rotateX: '-5deg' }, { rotateY: '22deg' }],
         borderWidth: 2,
         borderColor: '#bfdfa9'
     },
