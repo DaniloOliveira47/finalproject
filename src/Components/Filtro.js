@@ -1,27 +1,36 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-export default function Filtro(props) {
+export default function Filtro({ title, ativo, onPress }) {
   return (
-    <Pressable style={styles.container} >
-      <Text style={styles.text}>{props.title}</Text>
-    </Pressable>
+    <TouchableOpacity
+      style={[styles.filterButton, ativo && styles.filterButtonAtivo]}
+      onPress={onPress}
+    >
+      <Text style={[styles.filterText, ativo && styles.filterTextAtivo]}>{title}</Text>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: 70,
-    height: 70,
-    borderRadius: 15,
-    backgroundColor: '#002a00',
-    padding: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
+  filterButton: {
+    backgroundColor: '#eee8d5',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#586e75',
   },
-  text: {
-    color: '#ffffff',
+  filterText: {
+    color: '#073642',
+    fontSize: 14,
     fontWeight: 'bold',
-    fontSize: 12
+  },
+  filterButtonAtivo: {
+    backgroundColor: '#2aa198',
+    borderColor: '#002b36',
+  },
+  filterTextAtivo: {
+    color: 'white',
   },
 });

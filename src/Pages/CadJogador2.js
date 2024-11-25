@@ -1,25 +1,46 @@
+
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Image, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ImageBackground } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import axios from 'axios';
 
-function CadJogador2() {
+function CadJogador2({ route }) {
   const navigation = useNavigation();
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [telefone, setTelefone] = useState('');
+  const { nome, email, telefone, idade, rg, foto } = route.params;
+
   const [posicao, setPosicao] = useState('');
   const [pernaDominante, setPernaDominante] = useState('');
-  const [password, setPassword] = useState('');
+  const [descricao, setDescricao] = useState('');
+  const [salario, setSalario] = useState('')
 
-  const handleLogin = () => {
-    if (!nome || !email || !telefone || !posicao || !pernaDominante || !password) {
+  const handleFinalizarCadastro = async () => {
+    if (!posicao || !pernaDominante) {
       Alert.alert("Error", "Please fill out all fields.");
     } else {
-      Alert.alert("Success", `Welcome, ${nome}!`);
+      const jogador = {
+        nome,
+        email,
+        telefone,
+        idade,
+        rg,
+        posicao,
+        pernaDominante,
+        descricao,
+        salario,
+        foto
+      };
+
+      try {
+        const response = await axios.post('http://10.0.2.2:3000/jogadores', jogador);
+        Alert.alert("Success", "Cadastro realizado com sucesso!");
+        navigation.navigate('Started');
+      } catch (error) {
+        Alert.alert("Error", "Falha ao cadastrar. Tente novamente.");
+        console.error(error);
+      }
     }
   };
-
   return (
     <ImageBackground
       source={require('../assets/images/grama.png')}
@@ -34,9 +55,16 @@ function CadJogador2() {
           <Text style={styles.pickerLabel}>Fale sobre suas caracteristicas e habilidades</Text>
           <TextInput
             style={styles.input}
-            value={nome}
-            onChangeText={setNome}
+            value={descricao}
+            onChangeText={setDescricao}
           />
+           <Text style={styles.pickerLabel}>Quanto você deseja receber pelo torneio?</Text>
+            <TextInput
+          style={styles.salario}
+          onChangeText={setSalario}
+          value={salario}
+          keyboardType="numeric"
+        />
           <Text style={styles.pickerLabel}>Posição</Text>
           <Picker
             selectedValue={posicao}
@@ -62,11 +90,11 @@ function CadJogador2() {
             <Picker.Item label="Ambas" value="Ambas" />
           </Picker>
 
-          <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+          <TouchableOpacity style={styles.loginButton} onPress={handleFinalizarCadastro}>
             <Text style={styles.loginButtonText}>Finalizar Cadastro</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate('Started')}>
+          <TouchableOpacity onPress={ () => navigation.navigate('Started')}>
             <Text style={styles.forgotPassword}>Não é o que procura? volte ao inicio</Text>
           </TouchableOpacity>
         </View>
@@ -82,9 +110,49 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
+  salario: {
+    width: '100%',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    marginVertical: 8,
+    borderRadius: 15,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    minHeight: 50, 
+    fontSize: 16,
+    textAlignVertical: 'center', 
+  },
+  input: {
+    width: '100%',
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    marginVertical: 8,
+    borderRadius: 15,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#ddd',
+    minHeight: 50, 
+    fontSize: 16,
+    textAlignVertical: 'center', 
+  },
+  picker: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderRadius: 15,
+    marginVertical: 8,
+    minHeight: 50, 
+    justifyContent: 'center', 
+  },
+  pickerLabel: {
+    color: 'white',
+    alignSelf: 'flex-start',
+    marginLeft: 10,
+    marginTop: 10,
+  },
   logo: {
     width: 300,
-    height: 190
+    height: 190,
   },
   backgroundImage: {
     flex: 1,
@@ -114,38 +182,12 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     borderRadius: 15,
-    shadowColor: '#00',
-    shadowOpacity: 0.2,
-    shadowRadius: 1.41,
     borderWidth: 4,
-    borderColor: 'rgba(255, 255, 255, 0.5)'
-  },
-  input: {
-    width: '100%',
-    padding: 10,
-    marginVertical: 8,
-    borderRadius: 15,
-    backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#ddd',
-    height: 100
-  },
-  pickerLabel: {
-    color: 'white',
-    alignSelf: 'flex-start',
-    marginLeft: 10,
-    marginTop: 10,
-  },
-  picker: {
-    width: '100%',
-    color: 'black',
-    backgroundColor: '#fff',
-    borderRadius: 15,
-    marginVertical: 8,
+    borderColor: 'rgba(255, 255, 255, 0.5)',
   },
   loginButton: {
     width: '100%',
-    padding: 12,
+    padding: 15,
     borderRadius: 15,
     backgroundColor: 'green',
     alignItems: 'center',
@@ -163,5 +205,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
+
 
 export default CadJogador2;

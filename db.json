@@ -1,51 +1,210 @@
 {
-  "contatos": [
+  "usuarios": [
     {
-      "id": "2824",
+      "id": "3356",
       "nome": "Danilo",
-      "telefone": "11119785656"
+      "email": "Danilo@gmail.com",
+      "password": "1234567",
+      "nomeClube": "PSG",
+      "dataCriacao": "20/07/3008",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/04582d6a-bb46-4c6b-8ce1-ea5ff99cc22c.png",
+      "lema": "LA PARIS",
+      "cores": "Azul e vermelho",
+      "titulos": "Libertadores, champions",
+      "mascote": "nenhum",
+      "redesSociais": "INSTAGRAM",
+      "categoria": "Amador",
+      "visao": "Clube que busca brigar po titulos",
+      "endereco": "COTIA",
+      "jogadores": [
+        {
+          "id": "b351",
+          "nome": "Estevao",
+          "email": "estevao@gmail.com",
+          "telefone": "119555847",
+          "idade": "21",
+          "rg": "1213213221321",
+          "posicao": "Atacante",
+          "pernaDominante": "Esquerda",
+          "descricao": "Velocista, ponta-direita com muita habilidade",
+          "salario": "2000",
+          "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/e889246d-4fb0-40c3-a4c5-5f793283c186.png"
+        },
+        {
+          "id": "1590",
+          "nome": "Henzo",
+          "email": "henzo@gmail.com",
+          "telefone": "12132134234",
+          "idade": "22",
+          "rg": "2134141",
+          "posicao": "Goleiro",
+          "pernaDominante": "Esquerda",
+          "descricao": "jogador talentoso sobre as traves, pasa confian…seguranca para a equipe",
+          "salario": "3250",
+          "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/dac32bf4-d89e-4081-bdf9-63f09600140f.png"
+        }
+      ]
     },
     {
-      "id": "9c87",
-      "nome": "Messiq",
-      "telefone": "1231421342"
-    },
-    {
-      "id": "7ee9",
-      "nome": "Neymar",
-      "telefone": "113463565646"
-    },
-    {
-      "id": "c63c",
-      "nome": "CR7",
-      "telefone": "2135245346"
-    },
-    {
-      "id": "456d",
-      "nome": "Griezman",
-      "telefone": "1178678678"
-    },
-    {
-      "id": "6ff0",
-      "nome": "Mbappe",
-      "telefone": "11278856858"
+      "id": "edf5",
+      "nome": "Pedro",
+      "email": "pedro@gmail.com",
+      "password": "1234567",
+      "nomeClube": "Chelsea",
+      "dataCriacao": "20/08/2020",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/c3d9d7b9-e091-4f39-b547-9c9d085e40ef.png",
+      "lema": "Pra cima",
+      "cores": "Azul, Branco",
+      "titulos": "2 premier league, 1 champions",
+      "mascote": "nao possui",
+      "redesSociais": "Instagram",
+      "categoria": "Profissional",
+      "visao": "Um clube que deseja ser muito maior em um futuo proximo",
+      "endereco": "Inglaterra",
+      "jogadores": [
+        {
+          "id": "a19e",
+          "nome": "Mane",
+          "email": "mane@gmail.com",
+          "telefone": "12112121",
+          "idade": "32",
+          "rg": "1213213131",
+          "posicao": "Meio-campo",
+          "pernaDominante": "Ambas",
+          "descricao": "driblador que pisa e chega bem na area, atua como CA, PE e MEI",
+          "salario": "1000",
+          "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/7050206b-ffc4-4232-879a-afd49c49f100.png"
+        },
+        {
+          "id": "a37b",
+          "nome": "Diego rico",
+          "email": "diego@gmail.com",
+          "telefone": "21537467467",
+          "idade": "23",
+          "rg": "2536746856",
+          "posicao": "Goleiro",
+          "pernaDominante": "Direita",
+          "descricao": "Um goleiro que sabe sair ojgando com os pes, e passa tranquilidade na frente do gol",
+          "salario": "3250",
+          "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/54c89dce-20e4-4b4f-9413-55aee52bbf8c.png"
+        }
+      ]
     }
   ],
-  "faq": [
+  "jogadores": [
     {
-      "id": "1",
-      "pergunta": "O que é JSON Server?",
-      "resposta": "JSON Server é uma ferramenta que permite..."
+      "id": "8ff6",
+      "nome": "Bellingham",
+      "email": "bellingham@gmail.com1",
+      "telefone": "212121",
+      "idade": "22",
+      "rg": "1213132132",
+      "posicao": "Meio-campo",
+      "pernaDominante": "Direita",
+      "descricao": "Meia de qualidade, com boa saida de jogo, Atuo como MC, MEI e VOL",
+      "salario": "4000",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/47baf92e-3859-4737-8118-d770301458a8.png"
     },
     {
-      "id": "2",
-      "pergunta": "Como instalar o JSON Server?",
-      "resposta": "Você pode instalar o JSON Server usando o npm com..."
+      "id": "f2c8",
+      "nome": "Vegetti",
+      "email": "Vegetti@gmail.com",
+      "telefone": "11111111",
+      "idade": "27",
+      "rg": "5675785785",
+      "posicao": "Atacante",
+      "pernaDominante": "Esquerda",
+      "descricao": "Muita ra…disposicao, atuo como CA",
+      "salario": "500",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/9dd04d7a-a1d3-4db2-ba27-3cd443b13ede.png"
     },
     {
-      "id": "3",
-      "pergunta": "Posso usar JSON Server em produção?",
-      "resposta": "JSON Server é uma ferramenta que permite..."
+      "id": "24b1",
+      "nome": "Reguillon",
+      "email": "Reguillon@gmail.com",
+      "telefone": "2354245234",
+      "idade": "25",
+      "rg": "457465746",
+      "posicao": "Defensor",
+      "pernaDominante": "Direita",
+      "descricao": "Lateral direito, com muita facilidade quando o assunto e marcacao",
+      "salario": "2700",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/36a34eba-b56f-4313-8cee-14116d185d38.png"
+    },
+    {
+      "id": "6f6c",
+      "nome": "Antonio",
+      "email": "Antonio@gmail.com",
+      "telefone": "3456363",
+      "idade": "34",
+      "rg": "4745674648",
+      "posicao": "Defensor",
+      "pernaDominante": "Ambas",
+      "descricao": "Um bom zagueiro com muita experiencia, atual vencedor do carioca",
+      "salario": "3200",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/018d40d9-a367-479c-884b-ebda6a3b9949.png"
+    }
+  ],
+  "transferencias": [
+    {
+      "id": "b351",
+      "nome": "Estevao",
+      "email": "estevao@gmail.com",
+      "telefone": "119555847",
+      "idade": "21",
+      "rg": "1213213221321",
+      "posicao": "Atacante",
+      "pernaDominante": "Esquerda",
+      "descricao": "Velocista, ponta-direita com muita habilidade",
+      "salario": "2000",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/e889246d-4fb0-40c3-a4c5-5f793283c186.png",
+      "clube": "PSG",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/04582d6a-bb46-4c6b-8ce1-ea5ff99cc22c.png"
+    },
+    {
+      "id": "1590",
+      "nome": "Henzo",
+      "email": "henzo@gmail.com",
+      "telefone": "12132134234",
+      "idade": "22",
+      "rg": "2134141",
+      "posicao": "Goleiro",
+      "pernaDominante": "Esquerda",
+      "descricao": "jogador talentoso sobre as traves, pasa confian…seguranca para a equipe",
+      "salario": "3250",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/dac32bf4-d89e-4081-bdf9-63f09600140f.png",
+      "clube": "PSG",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/04582d6a-bb46-4c6b-8ce1-ea5ff99cc22c.png"
+    },
+    {
+      "id": "a19e",
+      "nome": "Mane",
+      "email": "mane@gmail.com",
+      "telefone": "12112121",
+      "idade": "32",
+      "rg": "1213213131",
+      "posicao": "Meio-campo",
+      "pernaDominante": "Ambas",
+      "descricao": "driblador que pisa e chega bem na area, atua como CA, PE e MEI",
+      "salario": "1000",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/7050206b-ffc4-4232-879a-afd49c49f100.png",
+      "clube": "Chelsea",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/c3d9d7b9-e091-4f39-b547-9c9d085e40ef.png"
+    },
+    {
+      "id": "a37b",
+      "nome": "Diego rico",
+      "email": "diego@gmail.com",
+      "telefone": "21537467467",
+      "idade": "23",
+      "rg": "2536746856",
+      "posicao": "Goleiro",
+      "pernaDominante": "Direita",
+      "descricao": "Um goleiro que sabe sair ojgando com os pes, e passa tranquilidade na frente do gol",
+      "salario": "3250",
+      "foto": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/54c89dce-20e4-4b4f-9413-55aee52bbf8c.png",
+      "clube": "Chelsea",
+      "escudo": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fprojeto-general-10c0e0e6-2c21-46a1-ad5a-964e76aeeb6f/ImagePicker/c3d9d7b9-e091-4f39-b547-9c9d085e40ef.png"
     }
   ]
 }

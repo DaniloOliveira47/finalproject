@@ -1,14 +1,87 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TextInput, FlatList, ActivityIndicator, SafeAreaView, Image, } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
+import Navbar from '../Components/NavBar';
+import Filtro from '../Components/Filtro';
+import ProductCard from '../Components/ProductCard';
 
-export default function Home() {
+
+
+export default function Home({ navigation }) {
+  const [jogadores, setJogadores] = useState([]);
+  const [filteredJogadores, setFilteredJogadores] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [filtroAtivo, setFiltroAtivo] = useState('ALL');
+  const [search, setSearch] = useState('');
+  const isFocused = useIsFocused();
+
+  const carregarJogadores = () => {
+    setLoading(true);
+    axios
+      .get('http://10.0.2.2:3000/jogadores')
+      .then((response) => {
+        setJogadores(response.data);
+        setFilteredJogadores(response.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar jogadores:', error);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    if (isFocused) {
+      carregarJogadores();
+    }
+  }, [isFocused]);
+
+  const aplicarFiltro = (posicao) => {
+    setFiltroAtivo(posicao);
+    if (posicao === 'ALL') {
+      setFilteredJogadores(jogadores);
+    } else {
+      const filtrados = jogadores.filter((jogador) => jogador.posicao === posicao);
+      setFilteredJogadores(filtrados);
+    }
+  };
+
+  const filtrarPorNome = (texto) => {
+    setSearch(texto);
+
+
+    if (texto.trim() === '') {
+      aplicarFiltro(filtroAtivo);
+      return;
+    }
+
+
+    const jogadoresFiltrados = jogadores.filter((jogador) => {
+      const nomeMatch = jogador.nome.toLowerCase().includes(texto.toLowerCase());
+      const posicaoMatch = filtroAtivo === 'ALL' || jogador.posicao === filtroAtivo;
+      return nomeMatch && posicaoMatch;
+    });
+
+    setFilteredJogadores(jogadoresFiltrados);
+  };
+
+
   return (
     <View style={styles.pagina}>
-      <View style={styles.header}>
-        <TextInput placeholder="Search" placeholderTextColor="#a5a5a5" style={styles.title} />
-        <Ionicons name="search" size={24} color="white" style={styles.searchIcon} />
-      </View>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.header}>
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor="#a5a5a5"
+            style={styles.title}
+            value={search}
+            onChangeText={filtrarPorNome}
+          />
+          <Ionicons name="search" size={24} color="white" style={styles.searchIcon} />
+        </View>
+      </SafeAreaView>
 
       <View style={styles.mainCard}>
         <Image source={require('../assets/images/NextKick.png')} style={styles.bikeImage} />
@@ -16,46 +89,35 @@ export default function Home() {
       </View>
 
       <View style={styles.filtragem}>
-        <Filtro title="ALL" />
-        <Filtro title="ATA" />
-        <Filtro title="MEI" />
-        <Filtro title="DEF" />
-        <Filtro title="GOL" />
+        <Filtro title="ALL" ativo={filtroAtivo === 'ALL'} onPress={() => aplicarFiltro('ALL')} />
+        <Filtro title="ATA" ativo={filtroAtivo === 'ATA'} onPress={() => aplicarFiltro('Atacante')} />
+        <Filtro title="MEI" ativo={filtroAtivo === 'MEI'} onPress={() => aplicarFiltro('Meio-campo')} />
+        <Filtro title="DEF" ativo={filtroAtivo === 'DEF'} onPress={() => aplicarFiltro('Defensor')} />
+        <Filtro title="GOL" ativo={filtroAtivo === 'GOL'} onPress={() => aplicarFiltro('Goleiro')} />
       </View>
 
-      <View style={styles.cardsContainer}>
-        <ProductCard nome="Romário" posicao="Centro-Avante" price="R$10.000,00" />
-        <ProductCard nome="Jailson" posicao="Goleiro" price="R$600,00" />
-        <ProductCard nome="Luva de pedreiro" posicao="Ponta-Direita" price="R$2.000,00" />
-        <ProductCard nome="Luva de pedreiro" posicao="Ponta-Esquerda" price="R$1.500,00" />
-      </View>
+      {loading ? (
+        <ActivityIndicator size="large" color="#7cdd66" />
+      ) : (
+        <FlatList
+          data={filteredJogadores}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <ProductCard
+              nome={item.nome}
+              posicao={item.posicao}
+              pernaDominante={item.pernaDominante}
+              salario={item.salario}
+              foto={item.foto}
+              jogador={item}
+              navigation={navigation}
+            />
+          )}
+          contentContainerStyle={styles.cardsContainer}
+        />
+      )}
 
-      <View style={styles.navbar}>
-        <Ionicons name="home" size={24} color="#7cdd66" />
-        <Ionicons name="storefront" size={24} color="white" />
-        <Ionicons name="heart" size={24} color="white" />
-        <Ionicons name="person" size={24} color="white" />
-        <Ionicons name="arrow-back" size={24} color="white" />
-      </View>
-    </View>
-  );
-}
-
-function Filtro({ title }) {
-  return (
-    <TouchableOpacity style={styles.filterButton}>
-      <Text style={styles.filterText}>{title}</Text>
-    </TouchableOpacity>
-  );
-}
-
-function ProductCard({ nome, posicao, price }) {
-  return (
-    <View style={styles.productCard}>
-      <Image source={require('../assets/images/jogador.png')} style={styles.productImage} />
-      <Text style={styles.productTitle}>{nome}</Text>
-      <Text style={styles.productDescription}>{posicao}</Text>
-      <Text style={styles.productPrice}>{price}</Text>
+      <Navbar navigation={navigation} activeScreen="Home" />
     </View>
   );
 }
@@ -65,18 +127,20 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#002b36',
   },
+  safeArea: {
+    backgroundColor: '#073642',
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 20,
+    paddingVertical: 10,
     backgroundColor: '#073642',
-    paddingTop: 10,
-    paddingBottom: 10,
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
-    borderWidth: 1,
-    borderBottomColor: 'white'
+    borderBottomWidth: 1,
+    borderBottomColor: 'white',
   },
   title: {
     backgroundColor: 'white',
@@ -85,7 +149,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 8,
     color: '#333',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   searchIcon: {
     backgroundColor: '#2aa198',
@@ -97,10 +161,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     margin: 20,
     alignItems: 'center',
-
     borderWidth: 1,
     borderColor: 'white',
-    transform: [{ perspective: 1000 }, { rotateX: '-5deg' }, { rotateY: '22deg' }],
   },
   bikeImage: {
     width: '100%',
@@ -120,58 +182,47 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#586e75',
-    shadowColor: '#fff',
-    shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 5,
-    elevation: 5, 
   },
-
   filterText: {
     color: '#073642',
     fontSize: 14,
     fontWeight: 'bold',
   },
   cardsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap',
     paddingHorizontal: 10,
-    
   },
   productCard: {
+    flexDirection: 'row',
     backgroundColor: '#586e75',
     borderRadius: 10,
     padding: 10,
-    width: '45%',
     marginVertical: 10,
     alignItems: 'center',
-  
-    shadowColor: '#fff',
-    shadowOpacity: 0.3,
-    shadowOffset: { width: 20, height: 10 },
-    shadowRadius: 10,
-    elevation: 5, 
+    gap: 50
   },
-
   productImage: {
     width: 80,
     height: 80,
     borderRadius: 8,
-    marginBottom: 10,
+    marginRight: 10,
+    marginLeft: 20
+  },
+  productDetails: {
+    flex: 1,
+    alignItems: 'center'
   },
   productTitle: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
     marginBottom: 5,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
   },
   productDescription: {
     color: 'black',
     fontSize: 12,
-    textAlign: 'center',
-    fontWeight: 'bold'
+    textAlign: 'left',
+    fontWeight: 'bold',
   },
   productPrice: {
     color: '#5fc64d',
@@ -179,18 +230,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 5,
   },
-  navbar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#073642',
-    paddingVertical: 15,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-  },
   legenda: {
     color: 'black',
     textTransform: 'uppercase',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
+  filterButtonAtivo: {
+    backgroundColor: '#2aa198',
+    borderColor: '#002b36',
+  },
+  filterTextAtivo: {
+    color: 'white',
+  },
 });
-

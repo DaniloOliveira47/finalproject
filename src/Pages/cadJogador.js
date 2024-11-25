@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Image, Text, TextInput, TouchableOpacity, StyleSheet, Alert, ImageBackground } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 
 function CadJogador() {
   const navigation = useNavigation();
@@ -9,13 +10,33 @@ function CadJogador() {
   const [telefone, setTelefone] = useState('');
   const [idade, setIdade] = useState('');
   const [rg, setRg] = useState('');
-  const [password, setPassword] = useState('');
+  const [foto, setFoto] = useState(null);
 
-  const handleLogin = () => {
-    if (!nome || !email || !telefone || !idade || !rg || !password) {
-      Alert.alert("Error", "Please fill out all fields.");
+  const handleNext = () => {
+    if (!nome || !email || !telefone || !idade || !rg || !foto) {
+      Alert.alert("Erro", "Por favor, preencha todos os campos.");
     } else {
-      Alert.alert("Success", `Welcome, ${nome}!`);
+      navigation.navigate('CadJogador2', {
+        nome,
+        email,
+        telefone,
+        idade,
+        rg,
+        foto,
+      });
+    }
+  };
+
+  const selecionarFoto = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      setFoto(result.assets[0].uri);
     }
   };
 
@@ -70,12 +91,20 @@ function CadJogador() {
             keyboardType="numeric"
           />
 
-          <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('CadJogador2')}>
+          <TouchableOpacity style={styles.input} onPress={selecionarFoto}>
+            <Text style={styles.inputText}>
+              {foto ? 'Foto selecionada' : 'Selecionar Foto do Jogador'}
+            </Text>
+          </TouchableOpacity>
+
+          {foto && <Image source={{ uri: foto }} style={styles.fotoPreview} />}
+
+          <TouchableOpacity style={styles.loginButton} onPress={handleNext}>
             <Text style={styles.loginButtonText}>Continuar cadastro</Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => navigation.navigate('Started')}>
-            <Text style={styles.forgotPassword}>Não é o que procura? volte ao inicio</Text>
+            <Text style={styles.forgotPassword}>Não é o que procura? volte ao início</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -92,7 +121,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     width: 300,
-    height: 190
+    height: 190,
   },
   backgroundImage: {
     flex: 1,
@@ -126,7 +155,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 1.41,
     borderWidth: 4,
-    borderColor: 'rgba(255, 255, 255, 0.5)'
+    borderColor: 'rgba(255, 255, 255, 0.5)',
   },
   input: {
     width: '100%',
@@ -136,6 +165,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#ddd',
+  },
+  inputText: {
+    color: '#333',
+    fontSize: 16,
+  },
+  fotoPreview: {
+    width: 100,
+    height: 100,
+    marginTop: 15,
+    borderRadius: 50,
   },
   loginButton: {
     width: '100%',
