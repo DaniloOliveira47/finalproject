@@ -236,7 +236,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   filterButtonAtivo: {
-    backgroundColor: '#2aa198',
+    backgroundColor: '#2aa198', 
     borderColor: '#002b36',
   },
   filterTextAtivo: {

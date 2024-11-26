@@ -64,15 +64,19 @@ export default function MeuElenco() {
         </View>
       );
     }
-
+  
     return jogadoresFiltrados.map((jogador) => (
-      <View key={jogador.id} style={styles.card}>
+      <TouchableOpacity
+        key={jogador.id}
+        style={styles.card}
+        onPress={() => navigation.navigate('AnalisarJogador', { jogador })} 
+      >
         <Image source={{ uri: jogador.foto }} style={styles.playerImage} />
         <View style={styles.infoContainer}>
           <Text style={styles.playerName}>{jogador.nome}</Text>
           <Text style={styles.infoLabel}>Salário: R$ {jogador.salario.toLocaleString('pt-BR')},00</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     ));
   };
 
@@ -84,19 +88,18 @@ export default function MeuElenco() {
       </View>
 
       <ScrollView contentContainerStyle={styles.container}>
-        {/* Atacantes */}
+      
         <Text style={styles.sectionTitle}>Atacantes</Text>
         {renderJogadores('Atacante', 'Atacantes')}
 
-        {/* Meias */}
+       
         <Text style={styles.sectionTitle}>Meias</Text>
         {renderJogadores('Meio-campo', 'Meias')}
 
-        {/* Defensores */}
+      
         <Text style={styles.sectionTitle}>Defensores</Text>
         {renderJogadores('Zagueiro', 'Defensores')}
 
-        {/* Goleiros */}
         <Text style={styles.sectionTitle}>Goleiros</Text>
         {renderJogadores('Goleiro', 'Goleiros')}
       </ScrollView>

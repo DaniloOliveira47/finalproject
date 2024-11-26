@@ -14,6 +14,7 @@ import Categories from './src/Pages/Transfer';
 import DetalhesJogador from './src/Pages/DetalhesJogador';
 import ClubStatistics from './src/Pages/estatisticas';
 import MeuElenco from './src/Pages/MeuElenco';
+import AnalisarJogador from './src/Pages/analisarJogador';
 
 
 const Stack = createNativeStackNavigator();
@@ -33,6 +34,7 @@ export default function MainNavigator() {
             <Stack.Screen name="DetalhesJogador" component={DetalhesJogador} options={{headerShown: false}}/>
             <Stack.Screen name="estatisticas" component={ClubStatistics} options={{headerShown: false}}/>
             <Stack.Screen name="MeuElenco" component={MeuElenco} options={{headerShown: false}}/>
+            <Stack.Screen name="AnalisarJogador" component={AnalisarJogador} options={{headerShown: false}}/>
         </Stack.Navigator>
      </NavigationContainer>
   )
